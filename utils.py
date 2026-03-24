@@ -99,6 +99,8 @@ def rotate_points_torch(PC, R, T=None, inverse=True):
     if inverse:
         RT = RT.inverse()
 
+    RT = RT.float()
+    PC = PC.float()
     if PC.shape[0] == 4:
         PC = torch.mm(RT, PC)
     elif PC.shape[1] == 4:
